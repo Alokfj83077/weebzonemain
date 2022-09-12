@@ -441,8 +441,8 @@ def bot_sys_stats():
                 num_split += 1
     stats = f"""
 
-CPU: [{progress_bar(cpuUsage)}] {cpu}%
-RAM: [{progress_bar(mem_p)}] {mem}%
+CPU: [{progress_bar(cpu)}] {cpu}%
+RAM: [{progress_bar(mem)}] {mem}%
 Disk: [{progress_bar(disk)}] {disk}%
 
 TOTAL : {total}
