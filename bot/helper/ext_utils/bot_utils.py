@@ -440,14 +440,15 @@ def bot_sys_stats():
        if stats.status() == MirrorStatus.STATUS_SPLITTING:
                 num_split += 1
     stats = f"""
-CPU : {cpu}% 
-RAM : {mem}%
 
-DL : {num_active} | UP : {num_upload}
-SPLIT : {num_split} | ZIP : {num_archi}  
-UNZIP : {num_extract} | TOTAL : {tasks}
+CPU: [{progress_bar(cpuUsage)}] {cpu}%
+RAM: [{progress_bar(mem_p)}] {mem}%
+Disk: [{progress_bar(disk)}] {disk}%
 
-Made with ❤️ by {CREDIT_NAME}
+TOTAL : {total}
+FREE : {free} || USED: {used}
+
+Made by {CREDIT_NAME}
 """
     return stats
 dispatcher.add_handler(
