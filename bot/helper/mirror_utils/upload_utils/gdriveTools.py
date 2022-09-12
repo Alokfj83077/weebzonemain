@@ -384,11 +384,11 @@ class GoogleDriveHelper:
                     msg += f'\n<b>├🗃️ SubFolders: </b>{self.__total_folders}'
                     msg += f'\n<b>├🗂️ Files: </b>{self.__total_files}'
                 else:
-                    msg += f'<b>╭ Name: </b><code>{meta.get("name")}</code>'
-                    msg += f'\n<b>├ Size: </b>{get_readable_file_size(self.transferred_size)}'
-                    msg += f'\n<b>├ Type: </b>Folder'
-                    msg += f'\n<b>├ SubFolders: </b>{self.__total_folders}'
-                    msg += f'\n<b>├ Files: </b>{self.__total_files}'
+                    msg += f'<b>Name: </b><code>{meta.get("name")}</code>'
+                    msg += f'\n\n<b>Size: </b>{get_readable_file_size(self.transferred_size)}'
+                    msg += f'\n\n<b>Type: </b>Folder\'
+                    msg += f'\n<b>SubFolders: </b>{self.__total_folders}'
+                    msg += f'\n<b>Files: </b>{self.__total_files}'
                 buttons = ButtonMaker()
                 durl = short_url(durl)
                 buttons.buildbutton("☁️ Drive Link", durl)
