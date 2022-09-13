@@ -241,7 +241,7 @@ class MirrorLeechListener:
             slmsg += f"👥 Added by: {self.tag} | <code>{self.user_id}</code>\n\n"
         else:
             slmsg = f"Name: <{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n\n"
-            slmsg += f"Size: {size}\n"
+            slmsg += f"Size: {size}\n\n"
             slmsg += f"Added by: {self.tag} | <code>{self.user_id}</code>\n\n"
         if LINK_LOGS:
             try:
@@ -313,7 +313,7 @@ class MirrorLeechListener:
                 msg = f"<b>🗂️ Name: </b><{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n"
             else:
                 msg = f"<b>Name: </b><{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n"
-            botpm = f"<b>\nHey {self.tag}!, I have sent your stuff in PM.</b>\n"
+            botpm = f"\n\n<b>\nHey {self.tag}!, I have sent your stuff in PM.</b>\n"
             buttons = ButtonMaker()
             b_uname = bot.get_me().username
             botstart = f"http://t.me/{b_uname}"
@@ -335,7 +335,7 @@ class MirrorLeechListener:
         if EMOJI_THEME is True:
             msg = f"<b>╭🗂️ Name: </b><{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n<b>├📐 Size: </b>{size}"
         else:
-            msg = f"<b>╭ Name: </b><{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n<b>├ Size: </b>{size}"
+            msg = f"<b>Name: </b><{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n<b>├ Size: </b>{size}"
 
 
         if self.isLeech:
@@ -388,18 +388,18 @@ class MirrorLeechListener:
             if EMOJI_THEME is True:
                 msg += f'\n<b>├📚 Total Files: </b>{folders}'
             else:
-                msg += f'\n<b>├ Total Files: </b>{folders}'
+                msg += f'\n<b>Total Files: </b>{folders}'
             if typ != 0:
                 if EMOJI_THEME is True:
                     msg += f'\n<b>├💀 Corrupted Files: </b>{typ}'
                 else:
-                    msg += f'\n<b>├ Corrupted Files: </b>{typ}'
+                    msg += f'\n<b>Corrupted Files: </b>{typ}'
             if EMOJI_THEME is True:
                 msg += f'\n<b>├⌛ It Tooks:</b> {get_readable_time(time() - self.message.date.timestamp())}'
                 msg += f'\n<b>╰👤 #Leech_by: </b>{self.tag}\n\n'
             else: 
-                msg += f'\n<b>├ It Tooks:</b> {get_readable_time(time() - self.message.date.timestamp())}'
-                msg += f'\n<b>╰ #Leech_by: </b>{self.tag}\n\n'
+                msg += f'\n\<b>ELEPSED:</b> {get_readable_time(time() - self.message.date.timestamp())}'
+                msg += f'\n<b>cc: </b>{self.tag}\n\n'
 
 
 
@@ -450,23 +450,11 @@ class MirrorLeechListener:
                     clean_target(self.newDir)
                 return			   			  
         else:
-            if EMOJI_THEME is True:
-                msg += f'\n<b>├📦 Type: </b>{typ}'
-            else:
-                msg += f'\n<b>├ Type: </b>{typ}'
+            msg += f'\n\n<b>Type: </b>{typ}'
             if typ == "Folder":
-                if EMOJI_THEME is True:
-                    msg += f'\n<b>├🗃️ SubFolders: </b>{folders}'
-                    msg += f'\n<b>├🗂️ Files: </b>{files}'
-                else:
-                    msg += f'\n<b>├ SubFolders: </b>{folders}'
-                    msg += f'\n<b>├ Files: </b>{files}'
-            if EMOJI_THEME is True:
-                msg += f'\n<b>├⌛ It Tooks:</b> {get_readable_time(time() - self.message.date.timestamp())}'
-                msg += f'\n<b>╰👤 #Mirror_By: </b>{self.tag}\n\n'
-            else:
-                msg += f'\n<b>├ It Tooks:</b> {get_readable_time(time() - self.message.date.timestamp())}'
-                msg += f'\n<b>╰ #Mirror_By: </b>{self.tag}\n\n' 
+                msg += f'\n<b>SubFolders: </b>{folders}'
+                msg += f'\n<b>Files: </b>{files}'
+            msg += f'\n\n<b>cc: </b>{self.tag}' 
             buttons = ButtonMaker()
             link = short_url(link)
             if DISABLE_DRIVE_LINK is True and self.message.chat.type != 'private':
