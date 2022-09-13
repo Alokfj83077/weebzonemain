@@ -413,7 +413,7 @@ def pop_up_stats(update, context):
 def bot_sys_stats():
     currentTime = get_readable_time(time() - botStartTime)
     cpuUsage = cpu_percent(interval=0.5)
-    mem_p = memory.percent
+    mem = psutil.virtual_memory().percent  
     disk = psutil.disk_usage(DOWNLOAD_DIR).percent
     total, used, free = shutil.disk_usage(DOWNLOAD_DIR)
     total = get_readable_file_size(total)
@@ -441,7 +441,7 @@ def bot_sys_stats():
     stats = f"""
     
  CPU: [{progress_bar(cpuUsage)}] {cpuUsage}%
- RAM: [{progress_bar(mem_p)}] {mem_p}%
+ RAM: [{progress_bar(mem)}] {mem}%
  Disk: [{progress_bar(disk)}] {disk}%
 
  TOTAL : {total}
