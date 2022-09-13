@@ -439,16 +439,16 @@ def bot_sys_stats():
        if stats.status() == MirrorStatus.STATUS_SPLITTING:
                 num_split += 1
     stats = f"""
+    
+ CPU: [{progress_bar(cpuUsage)}] {cpuUsage}%
+ RAM: [{progress_bar(mem_p)}] {mem_p}%
+ Disk: [{progress_bar(disk)}] {disk}%
 
-CPU: [{progress_bar(cpuUsage)}] {cpuUsage}%
-RAM: [{progress_bar(mem_p)}] {mem_p}%
-Disk: [{progress_bar(disk)}] {disk}%
+ TOTAL : {total}
+ FREE : {free} || USED: {used}
 
-TOTAL : {total}
-FREE : {free} || USED: {used}
-
-Made by {CREDIT_NAME}
-"""
+ Made by {CREDIT_NAME}
+  """
     return stats
 dispatcher.add_handler(
     CallbackQueryHandler(pop_up_stats, pattern="^" + str(THREE) + "$")
