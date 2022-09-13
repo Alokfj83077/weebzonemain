@@ -41,16 +41,16 @@ class MirrorStatus:
         STATUS_CHECKING = "📝 CheckUp"
         STATUS_SEEDING = "🌧 Seed"
     else:
-        STATUS_UPLOADING = "Upload"
-        STATUS_DOWNLOADING = "Download"
-        STATUS_CLONING = "Clone"
+        STATUS_UPLOADING = "Uploading"
+        STATUS_DOWNLOADING = "Downloading"
+        STATUS_CLONING = "Cloneing"
         STATUS_WAITING = "Queue"
         STATUS_PAUSED = "Pause"
-        STATUS_ARCHIVING = "Archive"
-        STATUS_EXTRACTING = "Extract"
-        STATUS_SPLITTING = "Split"
+        STATUS_ARCHIVING = "Archiveing"
+        STATUS_EXTRACTING = "Extracting"
+        STATUS_SPLITTING = "Spliting"
         STATUS_CHECKING = "CheckUp"
-        STATUS_SEEDING = "Seed"
+        STATUS_SEEDING = "Seeding"
 
 class EngineStatus:
     STATUS_ARIA = "Aria2c v1.35.0"
@@ -155,12 +155,12 @@ def get_progress_bar_string(status):
 
 def get_readable_message():
     with download_dict_lock:
-        msg = f"\nBot Of Dexter\n\n"
+        msg = f"Bot Of Dexter\n\n"
         if STATUS_LIMIT is not None:
             tasks = len(download_dict)
             global pages
             pages = ceil(tasks/STATUS_LIMIT)
-            if PAGE_NO > pages and pages != 0:
+            if PAGE_NO > pages and pages != 1:
                 globals()['COUNT'] -= STATUS_LIMIT
                 globals()['PAGE_NO'] -= 1
         for index, download in enumerate(list(download_dict.values())[COUNT:], start=1):
