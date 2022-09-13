@@ -275,8 +275,7 @@ def get_readable_message():
             bmsg += f"\n<b>DL:</b> {get_readable_file_size(dl_speed)}/s | <b>UL:</b> {get_readable_file_size(up_speed)}/s"
         
         buttons = ButtonMaker()
-        buttons.sbutton("Refresh", "status refresh")
-        buttons.sbutton("Statistics", str(TWO))
+        buttons.sbutton("Refresh", "str")
         buttons.sbutton("Close", "status close")
         sbutton = InlineKeyboardMarkup(buttons.build_menu(3))
         
@@ -413,8 +412,8 @@ def pop_up_stats(update, context):
     query.answer(text=stats, show_alert=True)
 def bot_sys_stats():
     currentTime = get_readable_time(time() - botStartTime)
-    cpu = psutil.cpu_percent()
-    mem = psutil.virtual_memory().percent
+    cpuUsage = cpu_percent(interval=0.5)
+    mem_p = memory.percent
     disk = psutil.disk_usage(DOWNLOAD_DIR).percent
     total, used, free = shutil.disk_usage(DOWNLOAD_DIR)
     total = get_readable_file_size(total)
@@ -441,8 +440,8 @@ def bot_sys_stats():
                 num_split += 1
     stats = f"""
 
-CPU: [{progress_bar(cpu)}] {cpu}%
-RAM: [{progress_bar(mem)}] {mem}%
+CPU: [{progress_bar(cpuUsage)}] {cpuUsage}%
+RAM: [{progress_bar(mem_p)}] {mem_p}%
 Disk: [{progress_bar(disk)}] {disk}%
 
 TOTAL : {total}
