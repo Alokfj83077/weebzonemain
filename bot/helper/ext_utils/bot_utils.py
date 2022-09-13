@@ -276,7 +276,7 @@ def get_readable_message():
         
         buttons = ButtonMaker()
         buttons.sbutton("Refresh", "status refresh")
-        buttons.sbutton("Statistics", str(THREE))
+        buttons.sbutton("Statistics", str(TWO))
         buttons.sbutton("Close", "status close")
         sbutton = InlineKeyboardMarkup(buttons.build_menu(3))
         
@@ -285,7 +285,7 @@ def get_readable_message():
             buttons = ButtonMaker()
             if EMOJI_THEME is True:
                 buttons.sbutton("⏪Previous", "status pre")
-                buttons.sbutton(f"{PAGE_NO}/{pages}", str(THREE))
+                buttons.sbutton(f"{PAGE_NO}/{pages}", str(TWO))
                 buttons.sbutton("Next⏩", "status nex")
                 buttons.sbutton("Refresh", "status refresh")
                 buttons.sbutton("Close", "status close")
@@ -305,7 +305,7 @@ def turn(data):
             global COUNT, PAGE_NO
             if data[1] == "nex":
                 if PAGE_NO == pages:
-                    COUNT = 0
+                    COUNT = 1
                     PAGE_NO = 1
                 else:
                     COUNT += STATUS_LIMIT
