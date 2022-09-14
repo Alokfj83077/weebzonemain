@@ -155,12 +155,12 @@ def get_progress_bar_string(status):
 
 def get_readable_message():
     with download_dict_lock:
-        msg = f"Bot Of Dexter\n\n"
+        msg = f"Bot Of Dexter\n"
         if STATUS_LIMIT is not None:
             tasks = len(download_dict)
             global pages
             pages = ceil(tasks/STATUS_LIMIT)
-            if PAGE_NO > pages and pages != 1:
+            if PAGE_NO > pages and pages != 0:
                 globals()['COUNT'] -= STATUS_LIMIT
                 globals()['PAGE_NO'] -= 1
         for index, download in enumerate(list(download_dict.values())[COUNT:], start=1):
